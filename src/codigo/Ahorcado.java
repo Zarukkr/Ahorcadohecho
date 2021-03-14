@@ -19,7 +19,7 @@ import javax.swing.JButton;
 public class Ahorcado extends javax.swing.JFrame {
      String palabraOculta = "CE TYS";
     int contadorFallos = 0;
-   
+    int vida=1;
     
     
     String [] listaPalabras={"UNIVERSIDAD","BONDAD","ORDENADOR","TAZA","TECLADO","PANTALLA","TECLA","CORTINA","ABRIGO"};
@@ -56,7 +56,7 @@ public class Ahorcado extends javax.swing.JFrame {
     
     private void chequeaLetra(String letra){
        String auxiliar = palabraGuiones.getText();
-        if (palabraOculta.contains(letra)){
+        if (palabraOculta.contains(letra)&& vida ==1){
             //si la letra esta se quita un guion y se sustituye
            
             
@@ -81,26 +81,28 @@ public class Ahorcado extends javax.swing.JFrame {
     
     public void dibujaImagen(){
         String nombreImagen = "";
-        if(!palabraGuiones.getText().contains("_ ")){
+        if(!palabraGuiones.getText().contains("_ ")&& vida == 1){
             nombreImagen = "/Imagenes/acertaste.jpg"; 
             
         }
         else{
                 
         switch (contadorFallos){//switch instrucción que tienen todos los lenguajes de programación
-            case 1: nombreImagen = "/Imagenes/ahorcado_1.png"; break;
-            case 2: nombreImagen = "/Imagenes/ahorcado_2.png"; break;
-            case 3: nombreImagen = "/Imagenes/ahorcado_3.png"; break;
-            case 4: nombreImagen = "/Imagenes/ahorcado_4.png"; break;
-            case 5: nombreImagen = "/Imagenes/ahorcado_5.png"; break;
-            case 6: nombreImagen = "/Imagenes/ahorcado_6.png"; break;
-            default : nombreImagen = "/Imagenes/ahorcado7.png"; break;
+            case 0: nombreImagen = "/Imagenes/ahorcado_1.png"; break;
+            case 1: nombreImagen = "/Imagenes/ahorcado_2.png"; break;
+            case 2: nombreImagen = "/Imagenes/ahorcado_3.png"; break;
+            case 3: nombreImagen = "/Imagenes/ahorcado_4.png"; break;
+            case 4: nombreImagen = "/Imagenes/ahorcado_5.png"; break;
+            case 5: nombreImagen = "/Imagenes/ahorcado_6.png"; break;
+            default : nombreImagen = "/Imagenes/ahorcado72.png"; break;
          
         }
-        if (contadorFallos>=8) {
+        if (contadorFallos>=7) {
             //al darle a correcion cuenta como un fallo más, en verdad puedes darle a cualquier tecla
             nombreImagen = "/Imagenes/game_over.jpg";
             palabraGuiones.setText(palabraOculta);
+            vida = 0;
+            
             
         } else {            }
         }    
